@@ -22,6 +22,7 @@ func main() {
 	if credentialsJSON == "" {
 		log.Fatal("GOOGLE_CREDENTIALS_JSON environment variable is not set")
 	}
+	fmt.Println(credentialsJSON)
 
 	config, err := google.ConfigFromJSON([]byte(credentialsJSON), calendar.CalendarEventsScope)
 	if err != nil {
