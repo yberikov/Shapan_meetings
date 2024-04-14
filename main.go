@@ -19,6 +19,7 @@ func main() {
 	ctx := context.Background()
 	// Read credentials from environment variables
 	credentialsJSON := os.Getenv("GOOGLE_CREDENTIALS_JSON")
+	port := os.Getenv("PORT")
 	if credentialsJSON == "" {
 		log.Fatal("GOOGLE_CREDENTIALS_JSON environment variable is not set")
 	}
@@ -42,6 +43,6 @@ func main() {
 	router.HandleFunc("/searchSpeaking", handler.DataHandler).Methods("POST", "OPTIONS")
 	//router.HandleFunc("/login", handler.SignIn).Methods("POST", "OPTIONS")
 	fmt.Println("Server started:")
-	log.Fatal(http.ListenAndServe("0.0.0.0:7026", router))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, router))
 
 }
