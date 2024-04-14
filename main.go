@@ -42,6 +42,6 @@ func main() {
 	router.HandleFunc("/searchSpeaking", handler.DataHandler).Methods("POST", "OPTIONS")
 	//router.HandleFunc("/login", handler.SignIn).Methods("POST", "OPTIONS")
 	fmt.Println("Server started:")
-	log.Fatal(http.ListenAndServe("0.0", router))
+	log.Fatal(http.ListenAndServe("0.0.0.0:7026", router))
 
 }
