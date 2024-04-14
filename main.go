@@ -17,12 +17,13 @@ import (
 func main() {
 	//storage.CreateConn()
 	ctx := context.Background()
-	b, err := os.ReadFile("credentials.json")
-	if err != nil {
-		log.Fatalf("Unable to read client secret file: %v", err)
+	// Read credentials from environment variables
+	credentialsJSON := os.Getenv("GOOGLE_CREDENTIALS_JSON")
+	if credentialsJSON == "" {
+		log.Fatal("GOOGLE_CREDENTIALS_JSON environment variable is not set")
 	}
 
-	config, err := google.ConfigFromJSON(b, calendar.CalendarEventsScope)
+	config, err := google.ConfigFromJSON([]byte(credentialsJSON), calendar.CalendarEventsScope)
 	if err != nil {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}
