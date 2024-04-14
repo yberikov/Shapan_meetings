@@ -15,6 +15,7 @@ import (
 )
 
 func main() {
+	//storage.CreateConn()
 	ctx := context.Background()
 	b, err := os.ReadFile("credentials.json")
 	if err != nil {
