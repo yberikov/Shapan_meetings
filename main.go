@@ -38,9 +38,10 @@ func main() {
 	handler := handler2.NewHandler(srv)
 	router := mux.NewRouter()
 	router.Use(mux.CORSMethodMiddleware(router))
+
 	router.HandleFunc("/searchSpeaking", handler.DataHandler).Methods("POST", "OPTIONS")
 	//router.HandleFunc("/login", handler.SignIn).Methods("POST", "OPTIONS")
 	fmt.Println("Server started:")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe("0.0", router))
 
 }
